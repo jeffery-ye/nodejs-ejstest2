@@ -1,5 +1,29 @@
-<% if (user.firstName) { %>
+<html>
+
+<head>
+    <% include head %>
+</head>
+
+<body class="container">
+
+        <header>
+                <% include header %>
+        </header>
+   
+
+<div class="padtop50 jumbotron">
+<% if (user.firstName) { %>   
+    
+
 <h3>User found: 
 <%= user.firstName %></h3>
 
 <% } %>
+
+</div>
+
+<footer>
+        <% include footer %>
+    </footer>
+</body>
+</html>

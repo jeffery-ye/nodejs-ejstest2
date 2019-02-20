@@ -8,6 +8,12 @@ const ejs = require('ejs')
 app.use(bodyParser.urlencoded( {extended: false}))
 app.set('view engine', 'ejs')
 
+//app.set('views', path.join(__dirname + 'views'));
+
+app.get('/', (req,res) => {
+    res.render('./index.ejs')
+})
+
 const pool = mysql.createPool({
     connectionLimit: 10,
     host: 'localhost',
@@ -21,7 +27,7 @@ function getConnection(){
 }
 
 app.get('/form', (req, res) => {
-    res.sendFile(path.join(__dirname + '/views/form.html'))
+    res.render('form.ejs')
     console.log("Connected to Form")
 })
 
@@ -45,7 +51,7 @@ app.post('/test', (req, res) => {
 
 
 app.get('/create', (req, res) => {
-    res.sendFile(path.join(__dirname + '/views/outputform.html'))
+    res.render('outputform.ejs')
     console.log("Connected to Output Form")
 })
 
@@ -60,7 +66,7 @@ app.post('/output', (req, res) => {
     })        
 })
 
+app.use(express.static(__dirname + '/assets'));
 
 
-
-app.listen(3012, () => console.log("App Running on 3012"))
+app.listen(3013, () => console.log("App Running on 3013"))
