@@ -1,0 +1,25 @@
+<html>
+
+<head>
+    <% include partials/head %>
+</head>
+
+<body class="container">
+    <% include partials/header %>
+    <div class="padtop50 jumbotron">
+        <% if (user.firstName) { %>
+        <h3>Thank you
+            <%= user.firstName %>!
+            Your information has been added into the database.</h3>
+
+        <% } %>
+    </div>
+
+    <footer>
+        <% include partials/footer %>
+    </footer>
+</body>
+
+
+
+</html>

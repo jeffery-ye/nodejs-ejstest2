@@ -1,0 +1,27 @@
+<html>
+
+<head>
+    <% include partials/head %>
+</head>
+
+<body class='container'>
+
+    <header>
+        <% include partials/header %>
+    </header>
+
+    <div class="padtop50 jumbotron">
+        <form action='/surveysearch' method='POST'>
+            <input type='text' placeholder='Search First Name' name='first_name' />
+
+            <input type='text' placeholder='Search Age' name='age' />
+            <button type='submit'>Survey Search</button>
+        </form>
+    </div>
+
+    <footer>
+        <% include partials/footer %>
+    </footer>
+</body>
+
+</html>

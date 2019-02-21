@@ -1,0 +1,28 @@
+<html>
+
+<head>
+    <% include partials/head %>
+</head>
+
+<body class='container'>
+
+    <header>
+        <% include partials/header %>
+    </header>
+
+    <div class="padtop50 jumbotron">
+        <form action='/surveyoutput' method='POST'>
+            <input type='text' name='name' />
+            <input type='text' name='age' />
+            <button type='submit'>Submit</button>
+        </form>
+
+    </div>
+
+    <footer>
+        <% include partials/footer %>
+    </footer>
+
+</body>
+
+</html>

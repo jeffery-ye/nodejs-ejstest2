@@ -1,0 +1,48 @@
+<html>
+
+<head>
+        <% include partials/head %>
+</head>
+
+<body class="container">
+
+        <header>
+                <% include partials/header %>
+        </header>
+
+
+        <div class="padtop50 jumbotron">
+                <table class="table table-striped table-hover">
+                        <thead class="thead-dark">
+                                <tr>
+                                        <th>Firstname</th>
+                                        <th>Age</th>
+                                </tr>
+                        </thead>
+
+                        <% for (var i=1; i< newuser.length; i++) { %>
+                        <tr>
+                                <td><%= newuser[i].firstName %></td>
+                                <td><%= newuser[i].userAge %> </td>
+                        </tr>
+
+
+                        <% } %>
+                </table>
+
+
+                <div class="padtop50"></div>
+
+        </div>
+
+
+
+
+
+
+        <footer>
+                <% include partials/footer %>
+        </footer>
+</body>
+
+</html>
