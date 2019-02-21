@@ -1,25 +1,27 @@
 <html>
 
 <head>
-    <% include partials/head %>
+    <% include ../partials/head %>
 </head>
 
 <body class='container'>
 
     <header>
-        <% include partials/header %>
+        <% include ../partials/header %>
     </header>
 
     <div class="padtop50 jumbotron">
-        <form action='/usersearchresults' method='POST'>
+        <form action='/createuseroutput' method='POST'>
             <input type='text' name='first_name' />
-            <button type='submit'>Search</button>
+            <button type='submit'>Submit Name</button>
         </form>
+
     </div>
 
     <footer>
-        <% include partials/footer %>
+        <% include ../partials/footer %>
     </footer>
+
 </body>
 
 </html>

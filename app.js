@@ -28,7 +28,7 @@ function getConnection() {
 }
 
 app.get('/usersearch', (req, res) => {
-    res.render('usersearch.ejs')
+    res.render('users/usersearch.ejs')
     console.log("Connected to Form")
 })
 
@@ -44,7 +44,7 @@ app.post('/usersearchresults', (req, res) => {
         }
         rows.map((row) => {
             const user = { user: { firstName: row.first_name } }
-            res.render('usersearchresults.ejs', user)
+            res.render('users/usersearchresults.ejs', user)
         })
 
     })
@@ -52,7 +52,7 @@ app.post('/usersearchresults', (req, res) => {
 
 
 app.get('/surveysearchform', (req, res) => {
-    res.render('surveysearchform.ejs')
+    res.render('survey/surveysearchform.ejs')
     console.log("Connected to survey search form")
 })
 
@@ -73,14 +73,14 @@ app.post('/surveysearch', (req, res) => {
             newuser.push(user)
         })
 
-        res.render('surveysearchresults.ejs', { newuser: newuser })
+        res.render('survey/surveysearchresults.ejs', { newuser: newuser })
 
     })
 })
 
 
 app.get('/createnewuser', (req, res) => {
-    res.render('createuser.ejs')
+    res.render('users/createuser.ejs')
 
 })
 
@@ -91,12 +91,12 @@ app.post('/createuseroutput', (req, res) => {
     con.query(sql, [firstName], (err, rows) => {
         const user = { user: { "firstName": firstName } }
         //const user = {user: {firstName: row.first_name}}
-        res.render('createuseroutput.ejs', user)
+        res.render('users/createuseroutput.ejs', user)
     })
 })
 
 app.get('/survey', (req, res) => {
-    res.render('survey.ejs')
+    res.render('survey/survey.ejs')
     console.log('Connected to SQL Survey')
 })
 app.post('/surveyoutput', (req, res) => {
@@ -117,7 +117,7 @@ app.post('/surveyoutput', (req, res) => {
     con.query(sql2, [firstName], (err, rows) => {
         rows.map((row) => {
             const user = { user: { firstName: row.name } }
-            res.render('surveyoutput.ejs', user)
+            res.render('survey/surveyoutput.ejs', user)
         })
 
 
