@@ -12,7 +12,7 @@ app.set('view engine', 'ejs')
 //app.set('views', path.join(__dirname + 'views'));
 
 app.get('/', (req, res) => {
-    res.render('./index.ejs')
+    res.render('index.ejs')
 })
 
 const pool = mysql.createPool({
@@ -35,18 +35,21 @@ app.get('/usersearch', (req, res) => {
 app.post('/usersearchresults', (req, res) => {
     const con = getConnection()
     const firstName = req.body.first_name
-    const sql = "SELECT * FROM users WHERE first_name = ? limit 1"
-    con.query(sql, [firstName], (err, rows) => {
+    const lastName = req.body.last_name
+    const users = [{}]
+    const sql = "SELECT * FROM users WHERE first_name = ? or last_name = ?"
+    con.query(sql, [firstName, lastName], (err, rows) => {
         if (err) {
             sendstatus(500)
             console.log("Failed to find user")
             return
         }
         rows.map((row) => {
-            const user = { user: { firstName: row.first_name } }
-            res.render('users/usersearchresults.ejs', user)
+            const user = { firstName: row.first_name, lastName: row.last_name }
+            users.push(user)
         })
-
+        console.log(users[1])
+        res.render('users/usersearchresults.ejs', { users: users })
     })
 })
 
@@ -87,8 +90,10 @@ app.get('/createnewuser', (req, res) => {
 app.post('/createuseroutput', (req, res) => {
     const con = getConnection()
     const firstName = req.body.first_name
-    const sql = "INSERT INTO users (first_name) values (?)"
-    con.query(sql, [firstName], (err, rows) => {
+    const lastName = req.body.last_name
+    //NOTE: Select check if the username already exists. IF not, continue. Otherwise, return an error "User already exists"
+    const sql = "INSERT INTO users (first_name, last_name) values (?,?)"
+    con.query(sql, [firstName, lastName], (err, rows) => {
         const user = { user: { "firstName": firstName } }
         //const user = {user: {firstName: row.first_name}}
         res.render('users/createuseroutput.ejs', user)

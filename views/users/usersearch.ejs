@@ -12,12 +12,13 @@
 
     <div class="padtop50 jumbotron">
         <form action='/usersearchresults' method='POST'>
-            <input type='text' name='first_name' />
+            <input type='text' placeholder = "First Name" name='first_name' />
+            <input type='text' placeholder = "Last Name" name='last_name' />
             <button type='submit'>Search</button>
         </form>
     </div>
 
-    <footer>
+    <footer class = "footer">
         <% include ../partials/footer %>
     </footer>
 </body>
